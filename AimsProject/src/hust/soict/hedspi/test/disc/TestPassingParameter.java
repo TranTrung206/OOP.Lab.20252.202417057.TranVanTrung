@@ -1,1 +1,1 @@
-package hust.soict.dsai.test.disc;
+package hust.soict.hedspi.test.disc;
