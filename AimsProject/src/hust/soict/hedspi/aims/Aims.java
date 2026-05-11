@@ -9,8 +9,10 @@ public class Aims {
     public static void main(String[] args) {
         List<Media> mediae = new ArrayList<Media>();
 
-        CompactDisc cd = new CompactDisc(1, "Greatest Hits", "Music", 15.0f, "Queen");
+        CompactDisc cd = new CompactDisc(1, "Greatest Hits", "Music", 15.0f, "Unknown", 0, "Queen");
+        
         DigitalVideoDisc dvd = new DigitalVideoDisc(2, "The Lion King", "Animation", 20.0f, "Roger Allers", 89);
+        
         Book book = new Book(3, "Java Programming", "Education", 50.0f);
 
         cd.addTrack(new Track("Bohemian Rhapsody", 6));

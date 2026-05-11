@@ -1,23 +1,20 @@
 package hust.soict.hedspi.aims.media;
 
-public class DigitalVideoDisc extends Media implements Playable {
-    private String director;
-    private int length;
-
+public class DigitalVideoDisc extends Disc implements Playable {
     public DigitalVideoDisc(int id, String title, String category, float cost, String director, int length) {
-        super(id, title, category, cost);
-        this.director = director;
-        this.length = length;
+        super(id, title, category, cost, director, length);
     }
 
     @Override
     public void play() {
         System.out.println("Playing DVD: " + this.getTitle());
-        System.out.println("DVD length: " + length);
+        System.out.println("DVD length: " + getLength());
     }
 
     @Override
     public String toString() {
-        return "DVD: " + title + " - Category: " + category + " - Director: " + director + " - Length: " + length + " - Cost: " + cost + "$";
+        return "DVD: " + getTitle() + " - Category: " + getCategory() + 
+               " - Director: " + getDirector() + " - Length: " + getLength() + 
+               " - Cost: " + getCost() + "$";
     }
 }
