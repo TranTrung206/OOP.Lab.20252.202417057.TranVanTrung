@@ -1,0 +1,27 @@
+Cau hoi 14:
+Nhung lop nao la tap hop cua cac lop khac?
+Tra loi:
+-Cart (chua cac doi tuong Media), Store (chua cac doi tuong Media), va CompactDisc (chua cac doi tuong Track).
+Cau hoi 15:
+Neu doi tuong truyen vao khong phai la mot thuc the cua Media, dieu gi se xay ra?
+Tra loi:
+-Neu ban khong su dung kiem tra instanceof, chuong trinh se nem ra ngoai le ClassCastException va bi dung dot ngot. Bang cach su dung kiem tra instanceof, phuong thuc se chi don gian tra ve false, giup chi ra mot cach an toan rang hai doi tuong khong bang nhau.
+Cau hoi 16:
+Nhung uu diem cua Da hinh (Polymorphism) la gi?
+Tinh Ke thua (Inheritance) giup ich gi trong viec dat duoc Da hinh trong Java?
+Su khac biet giua Da hinh va Ke thua trong Java la gi?
+Tra loi:
+-Uu diem cua Da hinh: Giup ma nguon de mo rong va bao tri hon. Ban co phe them mot loai Media moi (vi du: Podcast) ma khong can thay doi logic xu ly trong Cart hoac Store.
+-Vai tro cua Ke thua: Ke thua cho phep cac lop con chia se mot kieu du lieu chung (Media), day la dieu kien tien quyet de co the xu ly chung mot cach dong nhat trong mot danh sach.
+-Su khac biet: Ke thua tap trung vao viec chia se ma nguon va cac thuoc tinh (cau truc); trong khi Da hinh tap trung vao viec chia se mot giao dien chung nhung co cac hanh vi khac nhau (hanh dong).
+Cau hoi 17:
+Gia su tiep can theo cach dung interface Comparable:
+Lop nao nen trien khai interface Comparable?
+Trong cac lop do, ban nen trien khai phuong thuc compareTo nhu the nao de phan anh dung thu tu mong muon?
+Lieu chung ta co the co hai quy tac sap xep (theo tieu de roi den gia, va theo gia roi den tieu de) neu su dung Comparable khong?
+Gia su cac DVD co quy tac sap xep rieng (theo tieu de, sau do la giam dan theo do dai, roi moi den gia). Ban se sua ma nguon nhu the nao?
+Tra loi:
+-Lop Media nen trien khai Comparable cho Media neu ban muon co mot quy tac sap xep mac dinh cho tat ca cac loai media.
+-Trong phuong thuc compareTo, ban se viet logic so sanh cac thuoc tinh (nhu title hoac cost). Neu title bang nhau thi moi so sanh tiep den cost.
+-Khong. Comparable chi cho phep mot quy tac sap xep tu nhien duy nhat. De co nhieu quy tac sap xep khac nhau, ban bat buoc phai su dung Comparator.
+-De DVD co quy tac rieng, ban can ghi de (override) lai phuong thuc compareTo ngay trong lop DigitalVideoDisc. Trong do, ban trien khai logic so sanh theo tieu de, sau do den do dai (giam dan), va cuoi cung la gia.
