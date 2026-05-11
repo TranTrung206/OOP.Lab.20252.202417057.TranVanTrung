@@ -2,56 +2,37 @@ package hust.soict.hedspi.aims;
 
 import hust.soict.hedspi.aims.Cart.Cart;
 import hust.soict.hedspi.aims.media.*;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Aims {
-    private static Cart cart = new Cart();
-    private static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
-        while (true) {
-            showMenu();
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            if (choice == 0) break;
-            switch (choice) {
-                case 1: viewStore(); break;
-                case 2: updateStore(); break;
-                case 3: seeCart(); break;
+        List<Media> mediae = new ArrayList<Media>();
+
+        CompactDisc cd = new CompactDisc(1, "Greatest Hits", "Music", 15.0f, "Queen");
+        DigitalVideoDisc dvd = new DigitalVideoDisc(2, "The Lion King", "Animation", 20.0f, "Roger Allers", 89);
+        Book book = new Book(3, "Java Programming", "Education", 50.0f);
+
+        cd.addTrack(new Track("Bohemian Rhapsody", 6));
+        cd.addTrack(new Track("Don't Stop Me Now", 4));
+
+        mediae.add(cd);
+        mediae.add(dvd);
+        mediae.add(book);
+
+        System.out.println("--- Media Information ---");
+        for (Media m : mediae) {
+            System.out.println(m.toString());
+        }
+
+        System.out.println("\n--- Testing Play Method ---");
+        for (Media m : mediae) {
+            if (m instanceof Playable) {
+                ((Playable) m).play();
+                System.out.println("--------------------");
+            } else {
+                System.out.println("The media: " + m.getTitle() + " is not playable (it's a Book).");
             }
         }
     }
-
-    public static void showMenu() {
-        System.out.println("AIMS: \n1. View store\n2. Update store\n3. See current cart\n0. Exit");
-    }
-
-    public static void seeCart() {
-        cart.print();
-        while (true) {
-            cartMenu();
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            if (choice == 0) break;
-            switch (choice) {
-                case 3:
-                    System.out.print("Title: ");
-                    String t = scanner.nextLine();
-                    Media m = cart.searchByTitle(t);
-                    if (m != null) cart.removeMedia(m);
-                    break;
-                case 5:
-                    System.out.println("Order created.");
-                    cart.empty();
-                    return;
-            }
-        }
-    }
-
-    public static void cartMenu() {
-        System.out.println("Options: \n1. Filter\n2. Sort\n3. Remove\n4. Play\n5. Place order\n0. Back");
-    }
-
-    public static void viewStore() { System.out.println("Store logic here"); }
-    public static void updateStore() { System.out.println("Update logic here"); }
 }

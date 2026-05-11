@@ -18,6 +18,6 @@ public class DigitalVideoDisc extends Media implements Playable {
 
     @Override
     public String toString() {
-        return "DVD - " + getTitle() + " - " + getCategory() + " - " + director + " - " + length + ": " + getCost() + " $";
+        return "DVD: " + title + " - Category: " + category + " - Director: " + director + " - Length: " + length + " - Cost: " + cost + "$";
     }
 }

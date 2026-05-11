@@ -1,24 +1,24 @@
 package hust.soict.hedspi.test.cart;
 
 import hust.soict.hedspi.aims.Cart.Cart;
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.Media;
 
 public class CartTest {
     public static void main(String[] args) {
         Cart cart = new Cart();
 
-        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", "John Musker", 89, 18.99f);
+        DigitalVideoDisc dvd1 = new DigitalVideoDisc(1, "The Lion King", "Animation", 19.95f, "Roger Allers", 87);
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc(2, "Star Wars", "Science Fiction", 24.95f, "George Lucas", 124);
+        DigitalVideoDisc dvd3 = new DigitalVideoDisc(3, "Aladdin", "Animation", 18.99f, "John Musker", 90);
 
-        System.out.println("--- Test them 2 DVD roi ---");
-        cart.addDigitalVideoDisc(dvd1, dvd2);
+        System.out.println("--- Test addMedia ---");
+        cart.addMedia(dvd1);
+        cart.addMedia(dvd2);
+        cart.addMedia(dvd3);
 
-        System.out.println("\n--- Test them mot mang DVD ---");
-        DigitalVideoDisc[] dvdList = {dvd3, new DigitalVideoDisc("Cinderella", "Animation", 15.5f)};
-        cart.addDigitalVideoDisc(dvdList);
+        cart.print();
 
-        System.out.println("\n--- Ket qua cuoi cung ---");
-        System.out.println("Total Cost: " + cart.totalCost());
+        System.out.println("Total Cost: " + cart.totalCost() + " $");
     }
 }

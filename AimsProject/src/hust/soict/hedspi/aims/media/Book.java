@@ -1,4 +1,5 @@
 package hust.soict.hedspi.aims.media;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,12 @@ public class Book extends Media {
         if (!authors.contains(authorName)) authors.add(authorName);
     }
 
+    public void removeAuthor(String authorName) {
+        authors.remove(authorName);
+    }
+
     @Override
     public String toString() {
-        return "Book - " + getTitle() + " - " + getCategory() + " - Authors: " + authors + ": " + getCost() + " $";
+        return "Book: " + title + " - Category: " + category + " - Authors: " + authors + " - Cost: " + cost + "$";
     }
 }

@@ -26,6 +26,6 @@ public abstract class Media {
 
     @Override
     public String toString() {
-        return "Media [id=" + id + ", title=" + title + ", category=" + category + ", cost=" + cost + "]";
+        return "Media: " + title + " - Category: " + category + " - Cost: " + cost + "$";
     }
 }
