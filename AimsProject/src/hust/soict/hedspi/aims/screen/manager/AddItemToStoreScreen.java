@@ -2,13 +2,13 @@ package hust.soict.hedspi.aims.screen.manager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import hust.soict.hedspi.aims.store.Store;
 
 public abstract class AddItemToStoreScreen extends JFrame {
     protected Store store;
     protected JPanel formPanel; 
+    protected JButton btnAdd;
+
     public AddItemToStoreScreen(Store store, String titleHeader) {
         this.store = store;
         
@@ -27,8 +27,9 @@ public abstract class AddItemToStoreScreen extends JFrame {
         
         addFormFields(); 
 
-        JButton btnAdd = new JButton("Add Item");
-        
+        btnAdd = new JButton("Add Item");
+        setupAddButtonAction();
+
         JPanel centerContainer = new JPanel(new BorderLayout());
         centerContainer.add(formPanel, BorderLayout.CENTER);
         
@@ -46,21 +47,22 @@ public abstract class AddItemToStoreScreen extends JFrame {
 
     private JMenuBar createMenuBar() {
         JMenu menu = new JMenu("Options");
-        
         JMenuItem viewStoreItem = new JMenuItem("View store");
-        viewStoreItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose(); 
-                new StoreManagerScreen(store); 
-            }
-        });
+        viewStoreItem.addActionListener(e -> { dispose(); new StoreManagerScreen(store); });
         menu.add(viewStoreItem);
 
         JMenu smUpdateStore = new JMenu("Update Store");
-        smUpdateStore.add(new JMenuItem("Add Book"));
-        smUpdateStore.add(new JMenuItem("Add CD"));
-        smUpdateStore.add(new JMenuItem("Add DVD"));
+        JMenuItem addBookItem = new JMenuItem("Add Book");
+        JMenuItem addCDItem = new JMenuItem("Add CD");
+        JMenuItem addDVDItem = new JMenuItem("Add DVD");
+
+        addBookItem.addActionListener(e -> { dispose(); new AddBookToStoreScreen(store).setVisible(true); });
+        addCDItem.addActionListener(e -> { dispose(); new AddCompactDiscToStoreScreen(store).setVisible(true); });
+        addDVDItem.addActionListener(e -> { dispose(); new AddDigitalVideoDiscToStoreScreen(store).setVisible(true); });
+
+        smUpdateStore.add(addBookItem);
+        smUpdateStore.add(addCDItem);
+        smUpdateStore.add(addDVDItem);
         menu.add(smUpdateStore);
 
         JMenuBar menuBar = new JMenuBar();
@@ -95,4 +97,5 @@ public abstract class AddItemToStoreScreen extends JFrame {
     }
 
     protected abstract void addFormFields();
+    protected abstract void setupAddButtonAction();
 }
