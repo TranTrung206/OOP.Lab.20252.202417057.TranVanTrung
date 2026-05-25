@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    // THÊM HÀM NÀY VÀO ĐỂ STORE SCREEN GỌI ĐƯỢC DANH SÁCH
     public ArrayList<Media> getItemsInStore() {
         return itemsInStore;
     }
