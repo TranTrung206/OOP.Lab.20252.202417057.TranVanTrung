@@ -2,6 +2,8 @@ package hust.soict.hedspi.aims.screen.manager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import hust.soict.hedspi.aims.store.Store;
 import hust.soict.hedspi.aims.media.Media;
@@ -40,9 +42,39 @@ public class StoreManagerScreen extends JFrame {
         menu.add(new JMenuItem("View store"));
 
         JMenu smUpdateStore = new JMenu("Update Store");
-        smUpdateStore.add(new JMenuItem("Add Book"));
-        smUpdateStore.add(new JMenuItem("Add CD"));
-        smUpdateStore.add(new JMenuItem("Add DVD"));
+    
+        JMenuItem addBookItem = new JMenuItem("Add Book");
+        JMenuItem addCDItem = new JMenuItem("Add CD");
+        JMenuItem addDVDItem = new JMenuItem("Add DVD");
+
+        addBookItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); 
+                new AddBookToStoreScreen(store).setVisible(true);
+            }
+        });
+
+        addCDItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new AddCompactDiscToStoreScreen(store).setVisible(true);
+            }
+        });
+
+        addDVDItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Ẩn màn hình chính Store đi và mở màn hình Add DVD
+                dispose();
+                new AddDigitalVideoDiscToStoreScreen(store).setVisible(true);
+            }
+        });
+
+        smUpdateStore.add(addBookItem);
+        smUpdateStore.add(addCDItem);
+        smUpdateStore.add(addDVDItem);
         menu.add(smUpdateStore);
 
         JMenuBar menuBar = new JMenuBar();
@@ -70,7 +102,9 @@ public class StoreManagerScreen extends JFrame {
     JPanel createCenter() {
         JPanel center = new JPanel();
         ArrayList<Media> mediaInStore = store.getItemsInStore();
-        center.setLayout(new GridLayout(0, 3, 10, 10));
+        
+        center.setLayout(new GridLayout(0, 3, 20, 20));
+        center.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         for (Media media : mediaInStore) {
             MediaStore cell = new MediaStore(media);
