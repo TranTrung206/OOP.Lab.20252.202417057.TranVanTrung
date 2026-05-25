@@ -1,0 +1,17 @@
+1.3 Compare Swing and AWT elements:
+
+a. Compare the top-level containers in Swing and AWT:
+- AWT Top-level containers: Includes classes like Frame, Dialog, and Window. These containers rely heavily on the underlying operating system's native GUI toolkit to render resources and manage windows.
+- Swing Top-level containers: Includes classes like JFrame, JDialog, and JWindow. Unlike AWT, these inherit from AWT containers but add a root pane structure (JRootPane) which manages the content pane, layered pane, and glass pane, providing better support for layering, menu bars, and custom rendering.
+
+b. Compare the class name of components in AWT and the corresponding class's name in Swing:
+- AWT Component Names: Do not use any specific prefix. Examples include Button, Label, TextField, TextArea, Choice, List, and Checkbox.
+- Swing Component Names: Preceded by the letter 'J' to distinguish them from heavy-weight AWT classes. Examples include JButton, JLabel, JTextField, JTextArea, JComboBox, JList, and JCheckBox.
+
+c. Compare the event-handling of Swing and AWT applications:
+- Similarities: Both AWT and Swing share the same core delegation event model defined in the 'java.awt.event' package. They both utilize Listeners (e.g., ActionListener, MouseListener) and Event Objects (e.g., ActionEvent, MouseEvent).
+- Differences: Swing components introduce additional specialized events and extended models to support its advanced components (such as ListSelectionEvent for JList, TreeModelEvent for JTree, and DocumentEvent for text components). Swing also supports Key Bindings as a more flexible alternative to AWT KeyListeners.
+
+d. Compare the resulting appearances of the applications:
+- AWT Appearance (Heavyweight / Platform-dependent): AWT components look different depending on the operating system they run on (Windows, macOS, Linux) because they are drawn using native OS peers. AWT lacks advanced styling, padding, and cannot support transparency or custom shapes natively.
+- Swing Appearance (Lightweight / Platform-independent): Swing components are written entirely in Java and rendered directly by Java code. This ensures a 100% consistent look and feel across all platforms. Swing natively supports customizable Pluggable Look and Feel (PLAF), rich borders, margins, padding, image icons, and transparent or rounded components.
