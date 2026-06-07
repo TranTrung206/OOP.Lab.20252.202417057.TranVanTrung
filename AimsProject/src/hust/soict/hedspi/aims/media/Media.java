@@ -13,15 +13,36 @@ public abstract class Media {
         this.cost = cost;
     }
 
-    public int getId() { return id; }
-    public String getTitle() { return title; }
-    public String getCategory() { return category; }
-    public float getCost() { return cost; }
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public float getCost() {
+        return cost;
+    }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof Media)) return false;
-        return ((Media) obj).title.equalsIgnoreCase(this.title);
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof Media)) {
+            return false;
+        }
+
+        Media media = (Media) obj;
+
+        return this.title.equals(media.title)
+                && this.cost == media.cost;
     }
 
     @Override
