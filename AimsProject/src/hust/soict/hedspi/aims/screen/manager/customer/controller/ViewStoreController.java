@@ -1,19 +1,26 @@
 package hust.soict.hedspi.aims.screen.manager.customer.controller;
 
 import hust.soict.hedspi.aims.store.Store;
+import hust.soict.hedspi.aims.Cart.Cart;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import java.io.IOException;
 
 public class ViewStoreController {
     @FXML private GridPane gridPane;
+    @FXML private Button btnViewCart;
+    
     private Store store;
+    private Cart cart;
 
-    public ViewStoreController(Store store) {
+    public ViewStoreController(Store store, Cart cart) {
         this.store = store;
+        this.cart = cart;
     }
 
     @FXML
@@ -26,7 +33,7 @@ public class ViewStoreController {
                 AnchorPane anchorPane = fxmlLoader.load();
                 
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(store.getItemsInStore().get(i));
+                itemController.setData(store.getItemsInStore().get(i), cart);
                 
                 if (column == 3) {
                     column = 0;
@@ -38,5 +45,10 @@ public class ViewStoreController {
                 e.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    void btnViewCartPressed(ActionEvent event) {
+        new CartScreen(cart);
     }
 }

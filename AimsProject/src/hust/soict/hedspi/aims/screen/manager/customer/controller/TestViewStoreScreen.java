@@ -1,6 +1,7 @@
 package hust.soict.hedspi.aims.screen.manager.customer.controller;
 
 import hust.soict.hedspi.aims.store.Store;
+import hust.soict.hedspi.aims.Cart.Cart;
 import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,13 +11,14 @@ import javafx.stage.Stage;
 
 public class TestViewStoreScreen extends Application {
     private static Store store;
+    private static Cart cart;
 
     @Override
     public void start(Stage primaryStage) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/hust/soict/hedspi/aims/screen/manager/customer/view/Store.fxml"));
             
-            ViewStoreController viewStoreController = new ViewStoreController(store);
+            ViewStoreController viewStoreController = new ViewStoreController(store, cart);
             fxmlLoader.setController(viewStoreController);
             
             Parent root = fxmlLoader.load();
@@ -30,6 +32,7 @@ public class TestViewStoreScreen extends Application {
 
     public static void main(String[] args) {
         store = new Store();
+        cart = new Cart();
         
         DigitalVideoDisc dvd1 = new DigitalVideoDisc(1, "The Lion King", "Animation", 19.95f, "Roger Allers", 87);
         DigitalVideoDisc dvd2 = new DigitalVideoDisc(2, "Star Wars", "Science Fiction", 24.95f, "George Lucas", 124);

@@ -24,7 +24,7 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #009688;" text="View Cart" textFill="WHITE">
+                  <Button fx:id="btnViewCart" mnemonicParsing="false" onAction="#btnViewCartPressed" style="-fx-background-color: #009688;" text="View Cart" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
