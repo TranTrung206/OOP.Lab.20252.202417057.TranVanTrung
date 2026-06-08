@@ -7,16 +7,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://fxml.com/fx/1">
+<BorderPane prefHeight="768.0" prefWidth="1024.0" 
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="hust.soict.hedspi.aims.screen.manager.customer.controller.ViewStoreController">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #dddddd; -fx-border-width: 0 0 1 0;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" 
+            style="-fx-background-color: #f5f5f5; -fx-border-color: #dddddd; -fx-border-width: 0 0 1 0;" 
+            BorderPane.alignment="CENTER">
          <children>
-            <Label text="AIMS STORE" textFill="#009688">
+            <Label text="AIMS STORE" textFill="#004cff">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="40.0" />
                </font>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -24,7 +28,8 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnViewCart" mnemonicParsing="false" onAction="#btnViewCartPressed" style="-fx-background-color: #009688;" text="View Cart" textFill="WHITE">
+                  <Button fx:id="btnViewCart" mnemonicParsing="false" onAction="#btnViewCartPressed" 
+                          prefHeight="50.0" prefWidth="120.0" text="View Cart">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -38,18 +43,14 @@
       </HBox>
    </top>
    <center>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane fitToWidth="true" prefHeight="530.0" style="-fx-background-color: transparent;">
-               <content>
-                  <GridPane fx:id="gridPane" hgap="20.0" vgap="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </GridPane>
-               </content>
-            </ScrollPane>
-         </children>
-      </VBox>
+      <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
+         <content>
+            <GridPane fx:id="gridPane" hgap="20.0" vgap="20.0" alignment="TOP_LEFT">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </GridPane>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

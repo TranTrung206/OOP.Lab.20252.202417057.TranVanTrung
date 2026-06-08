@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -20,51 +19,69 @@ public class ViewStoreController {
     @FXML
     private GridPane gridPane;
 
-    @FXML
-    private Button btnViewCart;
-
     private Store store;
     private Cart cart;
 
-    public ViewStoreController(Store store, Cart cart) {
-        this.store = store;
-        this.cart = cart;
+    public ViewStoreController() {
     }
 
-    @FXML
-    public void initialize() {
+    public void initData(Store store, Cart cart) {
+
+        this.store = store;
+        this.cart = cart;
+
+        loadStore();
+    }
+
+    private void loadStore() {
+
+        final String ITEM_FXML =
+                "/hust/soict/hedspi/aims/screen/manager/customer/view/Item.fxml";
 
         int column = 0;
-        int row = 1;
+        int row = 0;
 
-        for (int i = 0; i < store.getItemsInStore().size(); i++) {
+        for (int i = 0;
+             i < store.getItemsInStore().size();
+             i++) {
 
             try {
 
-                FXMLLoader fxmlLoader =
+                FXMLLoader loader =
                         new FXMLLoader(
                                 getClass().getResource(
-                                        "/hust/soict/hedspi/aims/screen/manager/customer/view/Item.fxml"));
+                                        ITEM_FXML
+                                )
+                        );
 
-                AnchorPane anchorPane = fxmlLoader.load();
+                AnchorPane pane =
+                        loader.load();
 
-                ItemController itemController =
-                        fxmlLoader.getController();
+                ItemController controller =
+                        loader.getController();
 
-                itemController.setData(
+                controller.setData(
                         store.getItemsInStore().get(i),
-                        cart);
+                        cart
+                );
+
+                gridPane.add(
+                        pane,
+                        column,
+                        row
+                );
+
+                GridPane.setMargin(
+                        pane,
+                        new Insets(20)
+                );
+
+                column++;
 
                 if (column == 3) {
                     column = 0;
                     row++;
                 }
-
-                gridPane.add(anchorPane, column++, row);
-
-                GridPane.setMargin(
-                        anchorPane,
-                        new Insets(10));
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -80,23 +97,34 @@ public class ViewStoreController {
             FXMLLoader loader =
                     new FXMLLoader(
                             getClass().getResource(
-                                    "/hust/soict/hedspi/aims/screen/manager/customer/view/Cart.fxml"));
-
-            loader.setController(
-                    new CartController(cart));
+                                    "/hust/soict/hedspi/aims/screen/manager/customer/view/Cart.fxml"
+                            )
+                    );
 
             Parent root = loader.load();
 
-            Stage stage = new Stage();
+            CartController controller =
+                    loader.getController();
 
-            stage.setTitle("Cart");
+            controller.initData(store,cart);
+
+            Stage stage =
+                    (Stage) gridPane
+                            .getScene()
+                            .getWindow();
 
             stage.setScene(
-                    new Scene(root));
+                    new Scene(root)
+            );
+
+            stage.setTitle(
+                    "Cart Screen"
+            );
 
             stage.show();
 
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }

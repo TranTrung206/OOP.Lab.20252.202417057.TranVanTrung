@@ -4,26 +4,24 @@ import hust.soict.hedspi.aims.Cart.Cart;
 import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class ItemController {
 
     @FXML
-    private Button btnAddToCart;
-
-    @FXML
-    private Button btnPlay;
+    private Label lblTitle;
 
     @FXML
     private Label lblCost;
 
     @FXML
-    private Label lblTitle;
+    private Button btnAddToCart;
+
+    @FXML
+    private Button btnPlay;
 
     private Media media;
     private Cart cart;
@@ -39,40 +37,44 @@ public class ItemController {
     }
 
     @FXML
-    void btnAddToCartPressed(ActionEvent event) {
+    void btnAddToCartPressed() {
 
         cart.addMedia(media);
 
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Cart Update");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Add Media");
         alert.setHeaderText(null);
-        alert.setContentText(media.getTitle() + " has been added to your cart!");
+        alert.setContentText(
+                media.getTitle() + " has been added to cart!"
+        );
         alert.showAndWait();
     }
 
     @FXML
-    void btnPlayPressed(ActionEvent event) {
-
-        if (!(media instanceof Playable)) {
-            return;
-        }
+    void btnPlayPressed() {
 
         try {
 
-            ((Playable) media).play();
+            media.play();
 
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Playing Media");
-            alert.setHeaderText(null);
-            alert.setContentText("Playing: " + media.getTitle());
+            Alert alert =
+                    new Alert(Alert.AlertType.INFORMATION);
+
+            alert.setTitle("Play Media");
+            alert.setHeaderText("Now Playing");
+            alert.setContentText(media.toString());
+
             alert.showAndWait();
 
         } catch (PlayerException e) {
 
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Player Error");
+            Alert alert =
+                    new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Player Exception");
             alert.setHeaderText("Cannot play media");
             alert.setContentText(e.getMessage());
+
             alert.showAndWait();
         }
     }

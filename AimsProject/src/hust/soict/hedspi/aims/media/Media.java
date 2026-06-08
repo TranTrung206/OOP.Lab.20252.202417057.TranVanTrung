@@ -1,4 +1,5 @@
 package hust.soict.hedspi.aims.media;
+import hust.soict.hedspi.aims.exception.PlayerException;
 
 public abstract class Media {
     protected int id;
@@ -13,40 +14,10 @@ public abstract class Media {
         this.cost = cost;
     }
 
-    public int getId() {
-        return id;
-    }
+    public abstract void play() throws PlayerException; // Phải có throws
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (!(obj instanceof Media)) {
-            return false;
-        }
-
-        Media media = (Media) obj;
-
-        return this.title.equals(media.title)
-                && this.cost == media.cost;
-    }
-
-    @Override
-    public String toString() {
-        return "Media: " + title + " - Category: " + category + " - Cost: " + cost + "$";
-    }
+    public int getId() { return id; }
+    public String getTitle() { return title; }
+    public String getCategory() { return category; }
+    public float getCost() { return cost; }
 }

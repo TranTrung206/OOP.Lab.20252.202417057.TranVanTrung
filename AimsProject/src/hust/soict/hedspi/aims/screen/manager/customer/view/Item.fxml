@@ -7,7 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="180.0" prefWidth="160.0" style="-fx-border-color: #b5b5b5; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://fxml.com/fx/1" fx:controller="hust.soict.hedspi.aims.screen.manager.customer.controller.ItemController">
+<AnchorPane prefHeight="180.0" prefWidth="160.0" 
+            style="-fx-border-color: #b5b5b5; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-color: #ffffff;" 
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="hust.soict.hedspi.aims.screen.manager.customer.controller.ItemController">
    <children>
       <VBox alignment="CENTER" prefHeight="180.0" prefWidth="160.0" spacing="12.0" style="-fx-padding: 10;">
          <children>
@@ -21,10 +25,12 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" spacing="8.0">
+            <HBox fx:id="hboxButtons" alignment="CENTER" spacing="8.0">
                <children>
-                  <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#btnAddToCartPressed" style="-fx-background-color: #009688;" text="Add to Cart" textFill="WHITE" />
-                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" style="-fx-background-color: #ff9800;" text="Play" textFill="WHITE" />
+                  <Button fx:id="btnAddToCart" mnemonicParsing="false" onAction="#btnAddToCartPressed" 
+                          style="-fx-background-color: #009688;" text="Add" textFill="WHITE" />
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" 
+                          style="-fx-background-color: #ff9800;" text="Play" textFill="WHITE" />
                </children>
             </HBox>
          </children>
